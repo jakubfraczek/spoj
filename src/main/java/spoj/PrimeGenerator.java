@@ -9,49 +9,43 @@ public class PrimeGenerator {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("liczba linii");
 		int a = sc.nextInt();
 
 		List<Integer> primesList = new ArrayList<Integer>();
-		boolean[] primesArray = new boolean[10000000];
 
-		for (int i = 2; i < primesArray.length; i++) {
-			primesArray[i] = true;
-		}
-		int max = 10000000;
+		int max = 1000000000;
 		double n = Math.sqrt(max);
-		
-		for (int i = 2; i < n; i++) {
-			for (int j = i * i; j < max; j += i) {
-				primesArray[j] = false;
-			}
-		}
-		
-		for (int i = 31623; i < 10000000; i++){
-			primesArray[i] = false;
-		}
 
-		for (int i = 2; i < primesArray.length; i++) {
-			if(primesArray[i]){
+		primesList.add(2);
+		for (int i = 3; i < n; i += 2) {
+			boolean flag = true;
+			double limes = Math.sqrt(i);
+			
+			for (int j = 0; j < primesList.size(); j++) {
+				if (j > limes){
+					break;
+				}
+				
+				if (i % primesList.get(j) == 0){
+					flag = false;
+					break;
+				}
+
+			}
+			if (flag){
 				primesList.add(i);
 			}
 		}
-//		int index = 0;
-//		for(int p : primesList){
-//			System.out.println("Index: " + index + ", value: " + p);
-//			index++;
-//		}
-		
+
 		for (int i = 0; i < a; i++) {
-			System.out.println("zakres");
 			int b = sc.nextInt();
 			int c = sc.nextInt();
-			if (b<2){
+			if (b < 2) {
 				b = 2;
 			}
-			for (int j = b; j <= c; j++){
+			for (int j = b; j <= c; j++) {
 				int dupa = 0;
-				if(primesList.contains(j)){
+				if (primesList.contains(j)) {
 					dupa = primesList.indexOf(j);
 					System.out.println(primesList.get(dupa));
 				}
