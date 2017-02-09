@@ -1,63 +1,33 @@
 package spoj;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class PrimeGenerator {
 	public static void main(String[] args) {
-		try {
-			BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-			String line = buf.readLine();
-			int lines = Integer.parseInt(line);
 
-			for (int index = 0; index < lines; index++) {
+		Scanner sc = new Scanner(System.in);
 
-				int[] tab = null;
-
-				line = buf.readLine();
-				String[] dupa = line.split(" ", 2);
-				int a = Integer.parseInt(dupa[0]);
-				int n = Integer.parseInt(dupa[1]);
-
-				if (a <= 2) {
-					a = 2;
-					tab = findPrime(n);
-
-				} else {
-					tab = findPrime(n);
-				}
-
-				for (int t : tab) {
-					if (t >= a && t != 0) {
-						System.out.println(t);
+		System.out.println("liczba linii");
+		int a = sc.nextInt();
+		for (int i = 0; i < a; i++) {
+			System.out.println("zakres");
+			int b = sc.nextInt();
+			int c = sc.nextInt();
+			for (int j = b; j <= c; j++) {
+				List<Integer> pierwsze = new ArrayList<Integer>();
+				for (int x = 1; x <= j; x++) {
+					if (j % x == 0) {
+						pierwsze.add(j);
 					}
 				}
-
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-	}
-
-	private static int[] findPrime(int n) {
-		int[] tab;
-		tab = new int[n + 1];
-		for (int i = 0; i < tab.length; i++) {
-			tab[i] = i;
-		}
-
-		for (int i = 2; i * i < n; i++) {
-			if (tab[i] != 0) {
-				int j = i + i;
-				while (j < n) {
-					tab[j] = 0;
-					j += i;
+				if (pierwsze.size() == 2) {
+					System.out.println(j);
 				}
 			}
 		}
-		return tab;
+
 	}
 
 }
