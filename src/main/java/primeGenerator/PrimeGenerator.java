@@ -30,14 +30,15 @@ public class PrimeGenerator {
 			}
 		}
 
-		boolean[] isPrime = new boolean[100001];
-		Arrays.fill(isPrime, true);
-
 		int t = in.nextInt();
 
 		for (int index = 0; index < t; index++) {
 			int m = in.nextInt();
 			int n = in.nextInt();
+
+			boolean[] isPrime = new boolean[n - m + 1];
+			Arrays.fill(isPrime, true);
+
 			int o = n;
 			if (m < 2) {
 				o = n - m;
@@ -67,7 +68,5 @@ public class PrimeGenerator {
 		}
 		in.close();
 	}
-
-	
 
 }
