@@ -1,1 +1,5 @@
 /target/
+.DS_Store
+src/main/java/primeGenerator/Dupa.java
+src/main/java/primeGenerator/Main.java
+src/main/java/primeGenerator/PGweb.java
